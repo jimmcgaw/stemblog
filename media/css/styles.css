@@ -8,3 +8,7 @@ a.my-logo {
     color: #fff; }
   a.my-logo .next {
     color: #cfc94d; }
+
+.banner {
+  background: url(/static/folio/img/wallpaper.jpg);
+  background-size: 100%; }
