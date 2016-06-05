@@ -1,0 +1,4 @@
+media/lib
+static/lib
+node_modules/
+*.pyc

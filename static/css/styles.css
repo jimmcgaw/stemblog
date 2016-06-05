@@ -1,0 +1,10 @@
+a.my-logo {
+  float: left;
+  text-transform: uppercase;
+  font-size: 28px;
+  margin: 0px;
+  font-weight: bold; }
+  a.my-logo .first {
+    color: #fff; }
+  a.my-logo .next {
+    color: #cfc94d; }
