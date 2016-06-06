@@ -8,7 +8,10 @@
     <br />
     <em style="color:#999;">Published on {{ article.published_at }}</em>
     <br /><br />
-    <div id="content">
+    <div id="loading" style="min-height:200px;text-align:center;">
+      <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+    </div>
+    <div id="content" style="display:none;">
       {{ article.content }}
     </div>
   </div>
@@ -25,7 +28,12 @@
 
       var content = $("#content");
       var math = MathJax.Hub.getAllJax("content")[0];
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+      // queue up the mathjax formatting of the page, then trigger show of content
+      // once the formatting has been completed.
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, math], [function(){
+        $("#loading").hide();
+        $("#content").show();
+      }, 2]);
 
 
     }());

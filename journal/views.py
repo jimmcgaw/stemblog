@@ -9,7 +9,8 @@ def index(request):
     return render(request, 'index.html')
 
 def account(request):
-    return render(request, 'account.html')
+    user_articles = Article.objects.filter(author=request.user)
+    return render(request, 'account.html', locals())
 
 def new_article(request):
     if request.method == 'POST':
