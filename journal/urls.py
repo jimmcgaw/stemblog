@@ -9,5 +9,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     # override the logout function so we redirect to login page after
     url(r'^logout/$', logout, {'next_page': '/login/'}),
-    # url(r'^account/$', views.user_home, name='user_home'),
+    url(r'^account/$', views.account, name='account'),
+    url(r'^article/new/', views.new_article, name='new_article'),
+    url(r'^article/(?P<slug>[-\w]*)/$', views.view_article, name='view_article'),
 ]

@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+  <div class="container">
+    <h2>{{ article.title }}</h2>
+    <strong>by {{ article.author.username }}</strong>
+    <br />
+    <em style="color:#999;">Published on {{ article.published_at }}</em>
+    <br /><br />
+    <div id="content">
+      {{ article.content }}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+
+  <script type="text/javascript">
+    (function() {
+      'use strict';
+
+      var content = $("#content");
+      var math = MathJax.Hub.getAllJax("content")[0];
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+
+
+    }());
+  </script>
+{% endblock %}

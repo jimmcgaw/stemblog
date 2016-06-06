@@ -1,0 +1,51 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+  <form action="/article/new/" method="post">
+
+    {% csrf_token %}
+    <div class="row">
+
+      <div class="col-md-6">
+        {{ form.title }}
+        {{ form.content }}
+        {{ form.published_at }}
+      </div>
+
+      <div class="col-md-6">
+        <div id="preview">
+
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Publish</button>
+    <button type="submit" class="btn btn-default">Save and Quit</button>
+    <button type="submit" class="btn btn-primary">Save Draft</button>
+
+  </form>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+
+  <script type="text/javascript">
+  (function() {
+    'use strict';
+
+    $("#id_content").keyup(function(){
+
+      var text = $(this).val();
+      var preview = $('#preview');
+      preview.text(text);
+
+      var math = MathJax.Hub.getAllJax("preview")[0];
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+
+    });
+    }());
+  </script>
+{% endblock %}
