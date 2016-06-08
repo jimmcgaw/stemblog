@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+
+        <h2>Sign Up</h2>
+        {% if form.errors %}
+          <p style="color:red;font-weight:bold;">
+            {% for key, value in form.errors.items %}
+              {{ key }} - {{ value }}
+            {% endfor %}
+          </p>
+        {% endif %}
+
+        <form action="{% url 'registration_register' %}" method="post" role="form">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+          <div class="form-group">
+            {{ form.username.errors }}
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            <input id="id_username" maxlength="30" name="username" type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            {{ form.email.errors }}
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            <input id="id_email" name="email" type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            {{ form.password1.errors }}
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            <input id="id_password1" name="password1" type="password" class="form-control" required>
+          </div>
+          <div class="form-group">
+            {{ form.password2.errors }}
+            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+            <input id="id_password2" name="password2" type="password" class="form-control" requiredp>
+          </div>
+
+          <button class="btn btn-primary">Sign Up</button>
+        </form>
+
+      </div>
+
+      <div class="col-md-6"></div>
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}

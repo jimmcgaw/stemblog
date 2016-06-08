@@ -12,7 +12,7 @@ def index(request):
 @login_required
 def account(request):
     user_articles = Article.objects.filter(author=request.user)
-    return render(request, 'account.html', locals())
+    return render(request, 'journal.html', locals())
 
 @login_required
 def new_article(request):
@@ -30,7 +30,7 @@ def new_article(request):
         article = Article(author=request.user)
         form = ArticleForm(instance=article)
 
-    return render(request, 'article_form.html', locals())
+    return render(request, 'article/new.html', locals())
 
 @login_required
 def edit_article(request, article_id):
@@ -42,7 +42,7 @@ def edit_article(request, article_id):
         article_data['published_at'] = datetime.datetime.now()
         article_data['is_published'] = True
         # and so on
-    return render(request, 'article_form.html', locals())
+    return render(request, 'article/edit.html', locals())
 
 
 

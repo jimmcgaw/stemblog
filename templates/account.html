@@ -29,41 +29,17 @@
 
 	<div class="main">
 
-		{% block content %}
-
-			{% include "index/all.html" %}
-
-		{% endblock %}
+		{% block content %}{% endblock %}
 
 	</div>
 
-	{% block footer %}
-		{% include "shared/footer.html" %}
-	{% endblock %}
+	{% include "shared/mathjax_config.html" %}
 
-	<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({
-				extensions: ["tex2jax.js"],
-				jax: ["input/TeX", "output/HTML-CSS"],
-				tex2jax: {
-					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-					displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-					processEscapes: true
-				},
-				"HTML-CSS": { availableFonts: ["TeX"] }
-			});
-		</script>
 	<!-- bower:js -->
 	<script src="/static/lib/MathJax/MathJax.js"></script>
 	<script src="/static/lib/jquery/dist/jquery.js"></script>
 	<script src="/static/lib/bootstrap/dist/js/bootstrap.js"></script>
 	<!-- endbower -->
-
-	<script src="/static/folio/js/html5shiv.js"></script>
-	<script src="/static/folio/js/jquery-2.1.1.js"></script>
-	<script src="/static/folio/js/respond.min.js"></script>
-	<script src="/static/folio/js/smoothscroll.js"></script>
-	<script src="/static/folio/js/custom.js"></script>
 
 	{% block scripts %}{% endblock %}
 </body>

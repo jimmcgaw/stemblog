@@ -1,0 +1,22 @@
+{% extends "account.html" %}
+
+{% block content %}
+  <div class="article-form" style="width:100%;height:100vh;">
+
+    <form action="/article/new/" method="post">
+
+      {% include "article/form.html" %}
+
+    </form>
+
+  </div>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block scripts %}
+
+  {% include "article/mathjax_article.html" %}
+
+{% endblock %}

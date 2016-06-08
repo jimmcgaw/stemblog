@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'journal',
+    'registration',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -135,3 +136,5 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     MEDIA_ROOT
 ]
+
+ACCOUNT_ACTIVATION_DAYS = 30

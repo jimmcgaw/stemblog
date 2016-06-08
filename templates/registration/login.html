@@ -1,9 +1,13 @@
 {% extends "index.html" %}
 
 {% block content %}
-
+  <div class="container">
     <div class="row">
+      <div class="col-md-2">
+
+      </div>
       <div class="col-md-4">
+
         <h3>Login</h3>
         {% if form.errors %}
           <p style="color:red;font-weight:bold;">Your username and password didn't match. Please try again.</p>
@@ -13,26 +17,23 @@
           {% csrf_token %}
           <fieldset class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" id="username" placeholder="enter username">
+            <input type="text" class="form-control" name="username" id="username" placeholder="enter username" required>
           </fieldset>
           <fieldset class="form-group">
             <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" placeholder="enter password">
+            <input class="form-control" type="password" name="password" id="password" placeholder="enter password" required>
           </fieldset>
           <button type="submit" class="btn btn-primary">Log In</button>
         </form>
       </div>
 
-      <div class="col-md-2"></div>
-
       <div class="col-md-6">
-        <h3>Register</h3>
-
 
       </div>
-
-      <div class="col-md-2"></div>
-
     </div>
 
+  </div>
+
 {% endblock %}
+
+{% block footer %}{% endblock %}

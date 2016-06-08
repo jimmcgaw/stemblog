@@ -1,0 +1,32 @@
+<script type="text/javascript">
+var isRefreshing = false;
+(function() {
+  'use strict';
+
+  $("#id_content").keyup(function(){
+    if (isRefreshing){
+      return;
+    }
+
+    isRefreshing = true;
+
+    var text = $(this).val();
+    var preview = $('#preview');
+    preview.text(text);
+
+    var math = MathJax.Hub.getAllJax("preview")[0];
+    MathJax.Hub.Queue([function(){
+      $('#preview').hide();
+      $("#loading").show();
+    }, 1],
+    ["Typeset", MathJax.Hub, math], [function(){
+      $("#preview").show();
+      $("#loading").hide();
+    }, 2],
+    [function(){
+      isRefreshing = false;
+    }, 3]);
+
+  });
+  }());
+</script>
