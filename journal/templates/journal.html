@@ -1,4 +1,4 @@
-{% extends "index.html" %}
+{% extends "account.html" %}
 
 {% block content %}
 
@@ -7,9 +7,8 @@
     <div class="row">
 
         <h2>My Articles <a href="/journal/article/new"><i class="fa fa-plus-square"></i></a></h2>
-        <br />
-        {% include "journal/article_list.html" %}
 
+        {% include "journal/article_list.html" %}
 
     </div>
 
