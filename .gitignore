@@ -3,3 +3,4 @@ static/lib
 node_modules/
 *.pyc
 staticfiles
+local_settings.py
