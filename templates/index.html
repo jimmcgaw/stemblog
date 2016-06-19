@@ -41,18 +41,6 @@
 		{% include "shared/footer.html" %}
 	{% endblock %}
 
-	<script type="text/x-mathjax-config">
-			MathJax.Hub.Config({
-				extensions: ["tex2jax.js"],
-				jax: ["input/TeX", "output/HTML-CSS"],
-				tex2jax: {
-					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-					displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-					processEscapes: true
-				},
-				"HTML-CSS": { availableFonts: ["TeX"] }
-			});
-		</script>
 	<!-- bower:js -->
 	<script src="/static/lib/MathJax/MathJax.js"></script>
 	<script src="/static/lib/jquery/dist/jquery.js"></script>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .models import Article
 from .forms import ArticleForm
 
@@ -48,6 +49,7 @@ def edit_article(request, article_id):
 
 
 
-def view_article(request, slug):
-    article = get_object_or_404(Article, slug=slug)
+def view_article(request, username, slug):
+    user = get_object_or_404(User, username=username)
+    article = get_object_or_404(user.article_set, slug=slug)
     return render(request, 'article/show.html', locals())

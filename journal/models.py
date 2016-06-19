@@ -26,9 +26,12 @@ class Article(models.Model):
     def __unicode__(self):
         return "%s" % self.title
 
-    @permalink
     def get_absolute_url(self):
-        return ('view_article', None, { 'slug': self.slug })
+        return '/journal/author/%s/%s/' % (self.author.username, self.slug)
+
+    def get_edit_url(self):
+        return '/journal/article/%d/edit/' % self.id
+
 
     def save(self, *args, **kwargs):
         if not self.id:
