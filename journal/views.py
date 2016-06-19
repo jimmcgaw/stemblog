@@ -11,7 +11,7 @@ def index(request):
 
 @login_required
 def account(request):
-    user_articles = Article.objects.filter(author=request.user)
+    user_articles = request.user.article_set.all().order_by('-created_at')[:5]
     return render(request, 'journal.html', locals())
 
 @login_required
@@ -48,4 +48,4 @@ def edit_article(request, article_id):
 
 def view_article(request, slug):
     article = get_object_or_404(Article, slug=slug)
-    return render(request, 'view_article.html', locals())
+    return render(request, 'article/show.html', locals())

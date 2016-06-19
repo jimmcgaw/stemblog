@@ -12,7 +12,7 @@
         <ul>
           {% for article in user_articles %}
           <li>
-            <a href="">{{ article.title }}</a>
+            <a href="/journal/article/{{ article.slug }}">{{ article.title }}</a>
           </li>
           {% endfor %}
         </ul>
