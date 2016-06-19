@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <form action="/article/edit/" method="post">
+  <form action="/journal/article/edit/{{ article.id }}/" method="post">
 
     {% include "article/form.html" %}
 

@@ -1,0 +1,43 @@
+<table class="table table-striped" role="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>
+        Name
+      </th>
+      <th>
+
+      </th>
+      <th>
+        Published Date
+      </th>
+      <th>
+        Is Published
+      </th>
+      <th>
+        Action
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in user_articles %}
+    <tr>
+      <td>
+        <a href="/journal/article/{{ article.slug }}" style="font-weight:bold;">{{ article.title }}</a>
+      </td>
+      <td>
+        <a href="/journal/article/{{ article.slug }}">view</a> |
+        <a href="/journal/article/edit/{{ article.id }}">edit</a>
+      </td>
+      <td>
+        {{ article.published_at }}
+      </td>
+      <td>
+        <input type="checkbox" disabled="disabled" checked="{{ article.is_published }}" />
+      </td>
+      <td>
+        <button class="btn btn-link"><i class="fa fa-trash"></i></button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

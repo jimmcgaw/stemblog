@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Article
 from .forms import ArticleForm
@@ -25,7 +25,7 @@ def new_article(request):
         form = ArticleForm(article_data)
         if form.is_valid():
             form.save()
-
+            return redirect('/journal/')
     else:
         article = Article(author=request.user)
         form = ArticleForm(instance=article)
@@ -35,13 +35,15 @@ def new_article(request):
 @login_required
 def edit_article(request, article_id):
     article = get_object_or_404(Article, id=article_id)
-    form = Article(instance=article)
+    form = ArticleForm(instance=article)
     if request.method == 'POST':
         article_data = request.POST.copy()
         article_data['author_id'] = request.user.id
         article_data['published_at'] = datetime.datetime.now()
         article_data['is_published'] = True
-        # and so on
+        if form.is_valid():
+            form.save()
+            return redirect('/journal/')
     return render(request, 'article/edit.html', locals())
 
 
