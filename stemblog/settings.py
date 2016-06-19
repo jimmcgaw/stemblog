@@ -87,7 +87,7 @@ DATABASES = {
 }
 
 # Login page settings
-LOGIN_REDIRECT_URL = '/account/'
+LOGIN_REDIRECT_URL = '/journal/'
 LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_URL = '/login/'
 

@@ -23,11 +23,11 @@ from django.contrib.auth.views import logout
 
 urlpatterns = [
     url(r'^$', 'journal.views.index', name='index'),
+    # override the logout function so we redirect to login page after
+    url(r'^logout/$', logout, {'next_page': '/login/'}),
     url(r'^journal/', include('journal.urls')),
     url(r'^accounts/', include('registration.urls')),
     url(r'^', include('django.contrib.auth.urls')),
-    # override the logout function so we redirect to login page after
-    url(r'^logout/$', logout, {'next_page': '/login/'}),
 
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

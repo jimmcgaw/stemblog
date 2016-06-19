@@ -9,13 +9,30 @@
       <div class="col-md-6">
         <h2>My Articles</h2>
         <br />
-        <ul>
-          {% for article in user_articles %}
-          <li>
-            <a href="/journal/article/{{ article.slug }}">{{ article.title }}</a>
-          </li>
-          {% endfor %}
-        </ul>
+        <table class="table" role="table">
+          <thead>
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Published
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for article in user_articles %}
+            <tr>
+              <td>
+                <a href="/journal/article/{{ article.slug }}">{{ article.title }}</a>
+              </td>
+              <td>
+                {{ article.created_at }}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
       </div>
 
       <div class="col-md-6">
