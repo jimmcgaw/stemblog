@@ -13,15 +13,6 @@ gulp.task('sass:watch', function () {
   gulp.watch('./public/sass/**/*.scss', ['sass', 'inject']);
 });
 
-gulp.task('jshint', function(){
-   return gulp.src(jsFiles)
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish', {
-       verbose: true
-   }))
-   .pipe(jscs());
-});
-
 // \Big[\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + V\Big]\Psi = i\hbar \frac{\partial}{\partial t} \Psi
 
 gulp.task('inject', function(){
@@ -29,23 +20,42 @@ gulp.task('inject', function(){
     var inject = require('gulp-inject');
 
     var injectSrc = gulp.src([
-      './static/folio/js/**/*.js',
-      './static/js/**/*.js',
-      './static/folio/css/**/*.css',
-      './static/css/**/*.css',
+      './media/folio/js/**/*.js',
+      './media/js/**/*.js',
+      './media/folio/css/**/*.css',
+      './media/css/**/*.css',
     ], {read: false});
-    
+
     var injectOptions = {
-        ignorePath: '/'
+        ignorePath: '/media/',
+        addPrefix: '/static'
     };
 
     var options = {
         bowerJson: require('./bower.json'),
-        directory: './static/lib',
-        ignorePath: '..'
+        directory: './media/lib',
+        ignorePath: '../media',
+        fileTypes: {
+          html: {
+            replace: {
+              js: '<script src="/static{{filePath}}"></script>',
+              css: '<link rel="stylesheet" href="/static{{filePath}}" />'
+            }
+          }
+        }
     };
 
-    return gulp.src('./templates/index.html')
+    gulp.src('./templates/index.html')
+        .pipe(wiredep(options))
+        .pipe(inject(injectSrc, injectOptions))
+        .pipe(gulp.dest('./templates'));
+
+    injectSrc = gulp.src([
+      './media/js/**/*.js',
+      './media/css/**/*.css',
+    ], {read: false});
+
+    gulp.src('./templates/account.html')
         .pipe(wiredep(options))
         .pipe(inject(injectSrc, injectOptions))
         .pipe(gulp.dest('./templates'));
