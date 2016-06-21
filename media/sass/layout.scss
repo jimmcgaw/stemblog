@@ -1,24 +1,19 @@
-a.my-logo {
-  float: left;
-  text-transform: uppercase;
-  font-size:28px;
-  margin: 0px;
-  font-weight:bold;
+$header-height: 60px;
 
-  .first {
-    color: #fff;
-  }
-
-  .next {
-    color: #cfc94d;
-  }
+header.top-header {
+  height: $header-height;
+  position: relative;
 }
 
-.banner {
-  background: url(/static/folio/img/wallpaper.jpg);
-  background-size:100%;
+.navbar-default {
+  margin-top: 7px;
 }
 
-.main {
-  // padding-top: 70px;
+.article-editor,
+.article-preview {
+  
+}
+
+.article-editor {
+  background-color: #eee;
 }

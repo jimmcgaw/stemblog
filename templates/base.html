@@ -3,8 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+	<link rel="icon" type="image/png" href="/static/images/molecule.png" />
+
 	<title>STEM Journal</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 
@@ -27,11 +30,7 @@
 
 	{% include "shared/header.html" %}
 
-	<div class="main">
-
-		{% block content %}{% endblock %}
-
-	</div>
+	{% block content %}{% endblock %}
 
 	{% include "shared/mathjax_config.html" %}
 

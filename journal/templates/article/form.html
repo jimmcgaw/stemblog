@@ -1,7 +1,7 @@
 {% csrf_token %}
 <div class="row">
 
-  <div class="col-md-6" style="width:50%;height:100vh;background-color:#eee;position:relative;">
+  <div class="col-md-6 article-editor">
     <h2>Article Editor <i style="margin-left:15px;color:#666;" class="fa fa-pencil-square-o"></i></h2>
     <label for="{{ form.title.label_id }}">Title</label>
     {{ form.title }}
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="col-md-6" style="width:50%;height:100vh;overflow-y:scroll;">
+  <div class="col-md-6 article-preview">
     <h2>Preview Pane <i style="color:#666;margin-left:15px;" class="fa fa-newspaper-o"></i></h2>
     <div id="loading" style="min-height:400px;text-align:center;display:none;vertical-align:middle;">
       <i class="fa fa-refresh fa-spin fa-4x fa-fw"></i>
